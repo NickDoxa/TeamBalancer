@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import InputText from 'primevue/inputtext'
+import Dropdown from 'primevue/dropdown'
 import InputNumber from 'primevue/inputnumber'
 import { ref, computed } from 'vue'
 
@@ -7,6 +7,24 @@ interface PlayerStats {
   name: string
   rating: number
 }
+
+const Players = [
+  "Duck",
+  "Cayd",
+  "Doxa",
+  "Hudson",
+  "Tyler",
+  "Konky",
+  "Xanax",
+  "Cloudy",
+  "Luci",
+  "WillHuh",
+  "Will (Gay)",
+  "Gabe",
+  "Willow",
+  "Sham",
+  "G-blower",
+]
 
 const currentPlayers = ref<PlayerStats[]>([])
 const currentRating = ref<number | undefined>()
@@ -72,7 +90,9 @@ const teamBTotal = computed(() => {
     <div class="team-balancer-container__add-player">
       <h4>Add Player</h4>
       <div class="team-balancer-container__add-player-row">
-        <InputText v-model="currentPlayerName" placeholder="Player name"/>
+        <Dropdown v-model="currentPlayerName"
+                  :options="Players.sort((a, b) => a > b ? 1 : -1)"
+                  placeholder="Player name"/>
         <InputNumber v-model="currentRating" placeholder="1 - 99"/>
         <Button @click.stop.prevent="addPlayer" severity="danger">
           <i class="pi pi-plus"/>
