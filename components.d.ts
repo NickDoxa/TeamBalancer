@@ -9,6 +9,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Button: typeof import('primevue/button')['default']
+    Checkbox: typeof import('primevue/checkbox')['default']
     HomePageHeader: typeof import('./src/components/HomePageHeader.vue')['default']
     InputText: typeof import('primevue/inputtext')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
