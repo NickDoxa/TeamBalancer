@@ -11,6 +11,11 @@ import {
   Games
 } from '@/components/common/team-balancer.ts'
 
+enum Team {
+  A = 'A',
+  B = 'B'
+}
+
 const currentPlayers = ref<PlayerStats[]>([])
 const currentRating = ref<number | undefined>()
 const currentPlayerName = ref<string>('')
@@ -19,6 +24,15 @@ const finalTeamB = ref<PlayerStats[]>([])
 const maps = ref<Map[]>()
 const selectedGame = ref<Games | undefined>(undefined)
 const randomizedMapSelect = ref<Map | null>()
+const attack = ref<Team>()
+
+const teamAStartPosition = computed(() => {
+  return attack.value === Team.A ? 'Attack' : 'Defense'
+})
+
+const teamBStartPosition = computed(() => {
+  return attack.value === Team.B ? 'Attack' : 'Defense'
+})
 
 const addPlayer = () => {
   if (currentPlayerName.value === '' || !currentRating.value ||
@@ -62,6 +76,7 @@ const submitTeamBalancing = () => {
   const [teamA, teamB] = balanceTeams(currentPlayers.value)
   finalTeamA.value = teamA
   finalTeamB.value = teamB
+  randomizeAttackDefense()
 }
 
 const teamATotal = computed(() => {
@@ -71,6 +86,11 @@ const teamATotal = computed(() => {
 const teamBTotal = computed(() => {
   return finalTeamB.value.reduce((acc, player) => acc + player.rating, 0)
 })
+
+const randomizeAttackDefense = () => {
+  const randomNumber = Math.floor(Math.random() * 2)
+  attack.value = randomNumber > 0 ? Team.A : Team.B
+}
 
 const randomMap = (): Map | null => {
   if (!maps.value) return null
@@ -122,7 +142,7 @@ onBeforeMount(async () => {
       </div>
       <div class="team-balancer-container__results">
         <div class="team-balancer-container__results-column">
-          <h4 class="white">Team A Total: {{ teamATotal }}</h4>
+          <h4 class="white">Team A Total <span v-if="attack">({{teamAStartPosition}})</span>: {{ teamATotal }}</h4>
           <ul>
             <li v-for="(player, index) in finalTeamA" :key="index">
               {{ player.name }} - {{ player.rating }}
@@ -130,7 +150,7 @@ onBeforeMount(async () => {
           </ul>
         </div>
         <div class="team-balancer-container__results-column">
-          <h4 class="white">Team B Total: {{ teamBTotal }}</h4>
+          <h4 class="white">Team B Total <span v-if="attack">({{teamBStartPosition}})</span>: {{ teamBTotal }}</h4>
           <ul>
             <li v-for="(player, index) in finalTeamB" :key="index">
               {{ player.name }} - {{ player.rating }}
