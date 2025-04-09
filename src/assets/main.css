@@ -15,3 +15,7 @@ body {
 .white {
   color: white;
 }
+
+.red {
+  color: var(--p-red-500);
+}

@@ -97,7 +97,7 @@ onBeforeMount(async () => {
   <div class="team-balancer-container">
     <div class="team-balancer-container__grid">
       <div class="team-balancer-container__add-player">
-        <h4>Add Player</h4>
+        <h4>Add Player <i class="pi pi-user red"/></h4>
         <div class="team-balancer-container__add-player-row">
           <Select v-model="currentPlayerName"
                     :options="Players.sort((a, b) => a > b ? 1 : -1)"
@@ -109,7 +109,7 @@ onBeforeMount(async () => {
         </div>
       </div>
       <div class="team-balancer-container__current-players">
-        <h4 class="white">Current Players <i class="pi pi-user"/></h4>
+        <h4 class="white">Current Players <i class="pi pi-users red"/></h4>
         <ul v-if="currentPlayers.length > 0">
           <li v-for="(player, index) in currentPlayers" :key="index"
               @click.stop.prevent="() => removePlayer(player.name)" style="cursor: pointer;">
@@ -146,7 +146,7 @@ onBeforeMount(async () => {
     </div>
     <div class="team-balancer-container__map-randomizer">
       <h4 class="white">
-        Map Randomizer
+        Map Randomizer <i class="pi pi-map red"/>
       </h4>
       <p class="white"><i>Check the boxes next to the maps you would like to have in rotation</i></p>
       <div class="team-balancer-container__map-randomizer-buttons">

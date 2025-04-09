@@ -30,7 +30,7 @@
     font-family: TeamBalancerHeader, sans-serif;
     font-size: 1.5rem;
     font-weight: 400;
-    color: #a4a4a4;
+    color: #d2d2d2;
   }
 }
 </style>
