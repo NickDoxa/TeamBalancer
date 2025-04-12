@@ -29,6 +29,7 @@ export const Players = [
   "Luci",
   "Omx",
   "Sham",
+  "Trigger444",
   "Tyler",
   "Will (Gay)",
   "WillHuh",
@@ -36,7 +37,6 @@ export const Players = [
   "Wishy",
   "Xanax",
   "Xander",
-  "Trigger444",
 ]
 
 export const fetchValorantMaps = async () => {
