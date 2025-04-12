@@ -27,6 +27,7 @@ export const Players = [
   "Konky",
   "Lil Bippy",
   "Luci",
+  "Mr29Torq",
   "Omx",
   "Sham",
   "Trigger444",
