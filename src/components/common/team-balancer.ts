@@ -26,6 +26,7 @@ export const Players = [
   "Hudson",
   "Konky",
   "Lil Bippy",
+  "Lil Bippy (Intoxicated)",
   "Luci",
   "Mr29Torq",
   "Omx",
