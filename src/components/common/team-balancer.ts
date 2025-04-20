@@ -30,6 +30,7 @@ export const Players = [
   "Luci",
   "Mr29Torq",
   "Omx",
+  "PurpleChair",
   "Sham",
   "Trigger444",
   "Tyler",
